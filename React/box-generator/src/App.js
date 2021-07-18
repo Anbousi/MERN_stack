@@ -5,32 +5,18 @@ import './App.css';
 
 const arr =[];
 function App() {
-  const [selectedColor , setSelectedColor] = useState("");
-  const [selectedSize , setSelectedSize] = useState("");
-  const [colors , setColors] = useState("");
-  
+  const [boxes , setBoxes] = useState([]);
+
+
   const yourColor = ( newColor , newSize) => {
-    setSelectedColor( newColor );
-    setSelectedSize( newSize );
-    // arr.push(newColor);
     arr.push([newColor , newSize]);
-    // console.log(arr);
-    setColors(arr);
-    console.log(colors);
+    setBoxes([...arr],[arr]);
 }
+
   return (
     <div className="App">
       <BoxForm onNewColor = {yourColor}/>
-      <div className="flexo">
-        
-          {
-          arr.map((color , i) =>
-            <div className="m" key = {i}><BoxCreator color={color}/></div>
-            )
-          }
-        
-      </div>
-      
+      <BoxCreator boxes={boxes}/>
     </div>
   );
 }

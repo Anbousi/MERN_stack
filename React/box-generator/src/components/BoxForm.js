@@ -21,8 +21,8 @@ const BoxForm = (props) => {
     return (
         <div>
             <form onSubmit = {BoxColor}>
-                <input onChange={selectColor} value={color}></input>
-                <input onChange={selectSize} value={size}></input>
+                <input onChange={selectColor} type="text" value={color}></input>
+                <input onChange={selectSize} type="number" value={size}></input>
                 <button type="submit">Add</button>
             </form>
         </div>
