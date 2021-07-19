@@ -2,8 +2,7 @@
 import React ,{useState} from 'react'
 import style from './style.module.css'
 
-const Tab = () => {
-    const [text , setText] = useState("")
+const Tab = (props) => {
     const[Tab0,setTab0]=useState({"text":"this is tab1" , "backColor":"white" , "fontColor":"black"})
     const[Tab1,setTab1]=useState({"text":"this is tab2" , "backColor":"white", "fontColor":"black"})
     const[Tab2,setTab2]=useState({"text":"this is tab3" , "backColor":"white", "fontColor":"black"})
@@ -12,10 +11,10 @@ const Tab = () => {
     // const Tab2 = {"text":"this is tab3" , "backColor":"green"}
     const arr = [Tab0 , Tab1 , Tab2];
     const stylo =(e,tab)=>{
-        setText(tab.text);
         arr.filter(t => t.backColor === 'black').map(t => {t.backColor = 'white'; t.fontColor ="black" ; return t});
         tab.backColor="black";
         tab.fontColor="white";
+        props.onMsg(tab.text)
     }
     return (
         <>
@@ -26,7 +25,7 @@ const Tab = () => {
                 )
             }
         </div>
-        <p className={style.paragraph}>{text}</p>
+        
         </>
     )
 }
