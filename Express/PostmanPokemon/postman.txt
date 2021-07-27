@@ -1,0 +1,25 @@
+https://pokeapi.co/api/v2/pokemon/55
+
+output:
+"abilities": [
+        {
+            "ability": {
+                "name": "damp",
+                "url": "https://pokeapi.co/api/v2/ability/6/"
+            },
+            "is_hidden": false,
+            "slot": 1
+        }]
+...................................
+https://pokeapi.co/api/v2/pokemon/bulbasaur
+
+output:
+"abilities": [
+        {
+            "ability": {
+                "name": "bulbasaur",
+                "url": "https://pokeapi.co/api/v2/ability/14/"
+            },
+            "is_hidden": false,
+            "slot": 1
+        }]
