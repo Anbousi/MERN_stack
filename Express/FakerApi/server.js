@@ -28,16 +28,19 @@ class Company{
   }
 }
 
-const u1 = new User();
-const u2 = new User();
-console.log(u1)
-console.log(u2)
-app.get("/api/user", (req, res) => {
-  res.json({ message: "Hello World" });
+// const u1 = new User();
+// const u2 = new User();
+
+app.get("/api/user/new", (req, res) => {
+  res.json(new User());
 });
 
-app.get("/api", (req, res) => {
-    res.json(u1);
+app.get("/api/companies/new", (req, res) => {
+    res.json(new Company());
+});
+
+app.get("/api/user/company", (req, res) => {
+    res.json(new User(),new Company());
 });
 
 // req is short for request
