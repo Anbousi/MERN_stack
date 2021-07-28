@@ -1,0 +1,60 @@
+use my_first_db
+-----------------
+db.students.insert({name: 'Tasneem', home_state:'Palestine' , lucky_number: 5 , birthday: {month:25 , day:2 , year:1994}})
+db.students.insert({name: 'Mahmoud', home_state:'Palestine' , lucky_number: 33 , birthday: {month:6 , day:3 , year:1991}})
+db.students.insert({name: 'Karmel', home_state:'Palestine' , lucky_number: 6 , birthday: {month:6 , day:9 , year:1996}})
+db.students.insert({name: 'Wiliam', home_state:'CA' , lucky_number: 7 , birthday: {month:6 , day:3 , year:1991}})
+db.students.insert({name: 'Jack', home_state:'CA' , lucky_number: 9 , birthday: {month:6 , day:3 , year:1991}})
+-----------------
+db.students.find()
+-----------------
+db.students.find({home_state:'Palestine'}).pretty()
+-----------------
+db.students.find({lucky_number:{$gt:3}}).pretty()
+-----------------
+db.students.find({lucky_number:{$lte:10}}).pretty()
+-----------------
+db.students.find({lucky_number :{$gte:6 , $lte:30}}).pretty()
+or----
+db.students.find({ $and: [{"lucky_number": {$gte:6}}, {"lucky_number": {$lte:30}}]}).pretty()
+-----------------
+db.students.update({},{$set:{interests:['coding', 'brunch', 'MongoDB']}},{multi:true})
+WriteResult({ "nMatched" : 3, "nUpserted" : 0, "nModified" : 3 })
+-----------------
+db.students.update({name:"Mahmoud"},{$push:{interests:'Java'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+--
+db.students.update({name:"Tasneem"},{$push:{interests:'Music'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+--
+db.students.update({name:"Karmel"},{$push:{interests:'Crying'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+-----------------
+db.students.update({name:"Karmel"},{$push:{interests:'taxes'}})
+-----------------
+db.students.update({name:'Karmel'},{$pop:{interests:(1)}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+-----------------
+db.students.remove({home_state:'CA'})
+WriteResult({ "nRemoved" : 2 })
+-----------------
+db.students.remove({name:'Tasneem'})
+WriteResult({ "nRemoved" : 1 })
+-----------------
+db.students.remove({lucky_number:{$gt:5}},true)
+WriteResult({ "nRemoved" : 1 })
+-----------------
+db.students.update({},{$set:{number_of_belts:0}},{multi:true})
+WriteResult({ "nMatched" : 2, "nUpserted" : 0, "nModified" : 2 })
+-----------------
+db.students.update({},{ $inc: { number_of_belts: 1 }},{multi:true} )
+WriteResult({ "nMatched" : 2, "nUpserted" : 0, "nModified" : 2 })
+-----------------
+db.students.update({},{ $rename : {'number_of_belts':'belts_earned'}}, {multi:true})
+WriteResult({ "nMatched" : 2, "nUpserted" : 0, "nModified" : 2 })
+-----------------
+db.students.update({},{ $unset: {'lucky_number': ""} },{multi:true})
+WriteResult({ "nMatched" : 2, "nUpserted" : 0, "nModified" : 2 })
+-----------------
+db.students.update({},{$set:{updated_on:new Date() }}, {multi:true})
+WriteResult({ "nMatched" : 2, "nUpserted" : 0, "nModified" : 2 })
