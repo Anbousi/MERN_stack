@@ -1,11 +1,18 @@
-import logo from './logo.svg';
+import {Router} from '@reach/router'
 import './App.css';
 import Main from './views/Main'
 
+import DisplayProduct from './Components/DisplayProduct'
+
 function App() {
+
   return (
     <div className="App">
-      <Main />
+      <Router >
+        <Main  path = '/'/>
+        <DisplayProduct path = '/:id' />
+      </Router>
+
     </div>
   );
 }
