@@ -30,4 +30,21 @@ module.exports.findOneProduct = (req, res) => {
 		.catch(err => res.json({ message: "Something went wrong", error: err }));
 };
 
+module.exports.updateProduct = (req , res) => {
+    console.log('updating...')
+    ProductManager.findOneAndUpdate({_id: req.params.id} ,req.body , {new:true , runValidators:true})
+    .then(updateProduct => res.json(updateProduct))
+    .catch(err => res.json(err))
+}
+
+module.exports.deleteProduct = (req , res) => {
+    ProductManager.deleteOne({ _id: req.params.id })
+        .then(deleteConfirmation => res.json(deleteConfirmation))
+        .catch(err => response.json(err))
+}
+
+
+
+
+
 

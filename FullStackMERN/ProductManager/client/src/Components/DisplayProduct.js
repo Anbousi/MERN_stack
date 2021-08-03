@@ -1,5 +1,6 @@
 import React , {useEffect , useState} from 'react'
 import axios from 'axios'
+import { Link } from '@reach/router'
 
 const DisplayProduct = (props) => {
     const [product , setProduct] = useState({})
@@ -11,13 +12,14 @@ const DisplayProduct = (props) => {
         setLoaded(true)
         })
         .catch(err => console.log("Error ", err))
-    }, [props.id])
+    },[props.id])
     return (
         <div>
             {!loaded && <p>Data Loading...</p>}
-            {loaded && <p>{product.title}</p>}
-            {loaded && <p>{product.price}</p>}
-            {loaded && <p>{product.description}</p>}
+            { loaded && <p>{product.title}</p>}
+            { loaded && <p>{product.price}</p>}
+            { loaded && <p>{product.description}</p>}
+            { loaded && <Link to= {"/"+product._id +'/edit'}><button>Edit</button></Link>}
         </div>
     )
 }

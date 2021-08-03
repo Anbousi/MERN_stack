@@ -6,6 +6,9 @@ import ProductList from '../Components/ProductList'
 const Main = (props) => {
     const [loaded , setLoaded] = useState(false)
     const [products , setProducts] = useState([])
+    const removeFromDom = productId => {
+        setProducts(products.filter(product => product._id !== productId));
+    }
     useEffect(() => {
         axios.get('http://localhost:8000/api/pm')
         .then(res=>{setProducts(res.data)
@@ -16,10 +19,10 @@ const Main = (props) => {
     }, [])
     return (
         <>
-        <ProductManager />
+        <ProductManager eInput = 'Create' />
         { !loaded && <h3>No products added yet..</h3>}
         {loaded && <h3>All Products:</h3>}
-        {loaded && <ProductList allProducts = {products}/>}
+        {loaded && <ProductList allProducts = {products} removeFromDom={removeFromDom}/>}
         </>
     )
 }

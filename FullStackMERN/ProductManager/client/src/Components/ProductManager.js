@@ -1,24 +1,46 @@
-import React , {useState} from 'react'
+import React , {useState , useEffect} from 'react'
 import axios from 'axios'
 
-const ProductManager = () => {
-    const [title , setTitle] = useState('')
-    const [price , setPrice] = useState('')
-    const [description , setDescription] = useState('')
-    
+const ProductManager = (props) => {
+    const {eTitle, ePrice, eDescription , eInput , eId} = props
+    console.log(eTitle , ePrice , eDescription , eInput , eId)
+    const [title , setTitle] = useState()
+    const [price , setPrice] = useState()
+    const [description , setDescription] = useState()
+    useEffect(() => {
+        setTitle(eTitle);
+        setPrice(ePrice)
+        setDescription(eDescription)
+    }, [eTitle,ePrice,eDescription])
     const onSubmitHandler = e =>{
         e.preventDefault();
-        axios.post('http://localhost:8000/api/pm/create' , {
-            title,
-            price,
-            description
-        })
-        .then(res=>console.log('Response' , res))
-        .catch(err=>console.log('Error' , err))
+        if (eInput === 'Create'){
+            axios.post('http://localhost:8000/api/pm/create' , {
+                title,
+                price,
+                description
+            })
+            .then(res=>console.log('Response' , res))
+            .catch(err=>console.log('Error' , err))
+    
+            setTitle('');
+            setDescription('')
+            setPrice('')
+        }
 
-        setTitle('');
-        setDescription('')
-        setPrice('')
+        else if(eInput === 'Update'){
+            console.log("updating"  , eId)
+            axios.put('http://localhost:8000/'+ eId , {
+                title,
+                price,
+                description
+            })
+            .then(res=>console.log('Response' , res))
+            .catch(err=>console.log('Error' , err))
+
+            
+        }
+
     }
 
     return (
@@ -35,7 +57,7 @@ const ProductManager = () => {
                 <label>Description</label>
                 <input type="text" onChange={e=>setDescription(e.target.value)} value = {description}></input>
             </p>
-            <input type="submit" value="Create"/>           
+            <input type="submit" value= {eInput} />           
         </form>
     )
 }
