@@ -1,5 +1,6 @@
 import React , {useState , useEffect} from 'react'
 import axios from 'axios'
+import { navigate } from '@reach/router';
 
 const ProductManager = (props) => {
     const {eTitle, ePrice, eDescription , eInput , eId} = props
@@ -38,7 +39,7 @@ const ProductManager = (props) => {
             .then(res=>console.log('Response' , res))
             .catch(err=>console.log('Error' , err))
 
-            
+            navigate("/")
         }
 
     }
