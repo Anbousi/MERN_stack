@@ -27,8 +27,8 @@ const AuthorForm = (props) => {
                 <label>Name:</label>
                 <input type="text" onChange={(e)=>{setName(e.target.value) ; formName(e.target.value)}} value={editName}/>
                 <br></br>
-                <ClickButton title="Submit" callBackFunc={callFunc} />
-                <ClickButton title="Cancel" callBackFunc={NavigateTo}/>
+                <ClickButton color='primary' title="Submit" callBackFunc={callFunc} />
+                <ClickButton color='secondary' title="Cancel" callBackFunc={NavigateTo}/>
             </form>
             {errs}
         </div>

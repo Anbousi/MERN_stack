@@ -44,8 +44,8 @@ const Main = (props) => {
                                 <tr key={index}>
                                     <td>{value.name}</td>
                                     <td>
-                                        <ClickButton title='Delete' callBackFunc={()=>deleteAuthor(value._id)}/>
-                                        <ClickButton title='Edit' callBackFunc={(e)=>NavigateTo(value._id)}/>
+                                        <ClickButton color='secondary' title='Delete' callBackFunc={()=>deleteAuthor(value._id)}/>
+                                        <ClickButton color='primary' title='Edit' callBackFunc={(e)=>NavigateTo(value._id)}/>
                                     </td>
                                 </tr>
                             )
