@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
-        margin: theme.spacing(1),
+        margin: theme.spacing(2),
       },
     },
   }));
@@ -17,7 +17,7 @@ const ClickButton = (props) => {
     
     return (
         <>
-            <Button color={color} onClick={callBackFunc} className={classes.root}>{title}</Button>
+            <Button variant="outlined" color={color} onClick={callBackFunc} className={classes.root}>{title}</Button>
         </>
     )
 }
