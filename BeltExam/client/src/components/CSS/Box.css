@@ -1,0 +1,13 @@
+.Box{
+    flex: 1;
+    
+    border: 1px solid black;
+    box-sizing: border-box;
+    
+}
+
+.tasks{
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: scroll;
+}

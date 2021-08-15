@@ -18,6 +18,7 @@ const TableList = (props) => {
     }
 
     const deleteItem = (itemId) => {
+        
         axios.delete('http://localhost:8000/'+props.route+'/delete/' + itemId)
             .then(res => {
                 console.log('deleted' ,itemId )

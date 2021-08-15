@@ -1,0 +1,7 @@
+.link{
+    display: block;
+    text-align: right;
+}
+.error{
+    color: red;
+}
